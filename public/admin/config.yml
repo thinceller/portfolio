@@ -4,6 +4,8 @@ backend:
 locale: ja
 media_folder: public/img
 public_folder: img
+slug:
+  encoding: "ascii"
 collections:
 - name: "blog"
   label: "Blog"
