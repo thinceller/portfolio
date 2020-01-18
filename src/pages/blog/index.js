@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { Header } from '../components'
+import { Header } from '../../components'
 
 const Blog = props => {
   return (
@@ -10,7 +10,7 @@ const Blog = props => {
       <ul>
         {props.blogdata.map(data => (
           <li key={data.slug}>
-            <Link href={`/blog/${data.slug}`}>
+            <Link href='/blog/[slug]' as={`/blog/${data.slug}`}>
               <a>
                 <div>{data.title}</div>
                 <div>{data.description}</div>
@@ -24,12 +24,12 @@ const Blog = props => {
 }
 
 Blog.getInitialProps = async () => {
-  const context = require.context('../content/blog', true, /\.md$/)
+  const context = require.context('../../../content/blog', true, /\.md$/)
   const blogFiles = context
     .keys()
     .map(key => key.replace(/\.\//, ''))
   const promises = blogFiles.map(async filename => {
-    const fm = await import(`../content/blog/${filename}`)
+    const fm = await import(`../../../content/blog/${filename}`)
     return {
       title: fm.attributes.title,
       description: fm.attributes.description,
