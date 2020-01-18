@@ -12,6 +12,7 @@ collections:
   slug: "{{slug}}"
   fields:
     - { label: "タイトル", name: "title", widget: "string"}
+    - { label: "概要", name: "description", widget: "string"}
     - { label: "スラグ", name: "slug", widget: "string" }
     - { label: "公開日付", name: "date", widget: "datetime" }
     - { label: "本文", name: "body", widget: "markdown"}
