@@ -1,3 +1,17 @@
+const fs = require('fs')
+const path = require('path')
+
+const isFile = path => {
+    const stat = fs.statSync(path);
+    return stat.isFile();
+}
+
+const fetchMarkdownFIles = () => {
+  const targetDir = path.join(__dirname, 'content', 'blog')
+  const names = fs.readdirSync(targetDir)
+  return names.filter(name => isFile(`${targetDir}/${name}`))
+}
+
 module.exports = {
   webpack: (cfg) => {
     cfg.module.rules.push(
@@ -9,21 +23,19 @@ module.exports = {
     )
     return cfg;
   },
-  // TODO: next export 時の Dynamic Routing 設定
-  // exportPathMap: async () => {
-  //   const paths = {
-  //     '/': { page: '/' },
-  //     '/blog': { page: '/blog' }
-  //   }
+  // next export 時の Dynamic Routing 設定
+  exportPathMap: async () => {
+    const paths = {
+      '/': { page: '/' },
+      '/blog': { page: '/blog' }
+    }
 
-  //   const ctx = require.context('./content/blog', true, /\.md$/)
-  //   const slugs = ctx
-  //     .keys()
-  //     .map(key => key.replace('./', '').split('.')[0])
-  //   slugs.forEach(slug => {
-  //     paths[`/blog/${slug}`] = { page: '/blog/[slug]', query: { slug: slug } }
-  //   })
+    const files = fetchMarkdownFIles()
+    files.forEach(file => {
+      const slug = file.split('.')[0]
+      paths[`/blog/${slug}`] = { page: '/blog/[slug]', query: { slug: slug } }
+    })
 
-  //   return paths
-  // }
+    return paths
+  }
 }
