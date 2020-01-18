@@ -5,7 +5,7 @@ const Blog = props => (
     <Header />
     <h1>{props.title}</h1>
     <p>{props.date}</p>
-    <props.Markdown />
+    <div dangerouslySetInnerHTML={{ __html: props.html }} />
   </>
 )
 
@@ -13,7 +13,7 @@ Blog.getInitialProps = async ctx => {
   const { slug } = ctx.query
   const fm = await import(`../../../content/blog/${slug}.md`)
   return {
-    Markdown: fm.react,
+    html: fm.html,
     ...fm.attributes
   }
 }
