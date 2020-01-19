@@ -1,9 +1,11 @@
+import dayjs from 'dayjs'
+
 import { Layout } from '../../components'
 
 const Blog = props => (
   <Layout title={`${props.title} - thinceller`}>
     <h1>{props.title}</h1>
-    <p>{props.date}</p>
+    <p>{dayjs(props.date).format('YYYY/MM/DD')}</p>
     <div dangerouslySetInnerHTML={{ __html: props.html }} />
   </Layout>
 )

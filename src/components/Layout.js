@@ -13,8 +13,9 @@ const Layout = props => (
     </div>
     <style jsx>{`
       .main {
-        max-width: 1200px;
-        margin: 10px auto;
+        max-width: 1000px;
+        margin: 0px auto;
+        padding-left: 10px;
       }
     `}</style>
   </>

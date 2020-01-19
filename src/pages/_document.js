@@ -10,11 +10,7 @@ class MyDocument extends Document {
     return (
       <Html lang="ja">
         <Head>
-          <style>{`
-            body {
-              margin: 0;
-            }
-          `}</style>
+          <style>{`body{margin:0;}`}</style>
         </Head>
         <body>
           <Main />

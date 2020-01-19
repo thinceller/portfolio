@@ -1,27 +1,20 @@
-import Link from 'next/link'
+import dayjs from 'dayjs'
 
-import { Layout } from '../../components'
+import { Layout, BlogLink } from '../../components'
 
 const BlogIndex = props => {
   return (
     <Layout title="Blog - thinceller">
       <h1>Blog</h1>
-      <ul>
-        {props.blogdata.map(data => (
-          <li key={data.slug}>
-            <Link href='/blog/[slug]' as={`/blog/${data.slug}`}>
-              <a>
-                <div>{data.title}</div>
-                <div>{data.description}</div>
-              </a>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      {props.blogdata.map(data => (
+        <BlogLink {...data} key={data.slug} />
+      ))}
       <style jsx>{`
-        ul {
-          padding: 0px;
-          list-style: none;
+        h1 {
+          margin: 0px;
+          padding: 50px 0px;
+          text-align: center;
+          border-bottom: solid 1px rgb(238, 238, 238);
         }
       `}</style>
     </Layout>
@@ -42,7 +35,9 @@ BlogIndex.getInitialProps = async () => {
       slug: fm.attributes.slug
     }
   })
-  const blogdata = await Promise.all(promises)
+  const data = await Promise.all(promises)
+  // 新しいもの順に並び替える
+  const blogdata = data.sort((a, b) => dayjs(b.date) - dayjs(a.date))
   return {
     blogdata
   }

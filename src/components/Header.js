@@ -26,7 +26,7 @@ const Header = () => (
         box-shadow: 0px 1px 10px rgba(0,0,0,0.4);
       }
       div {
-        max-width: 1200px;
+        max-width: 1000px;
         margin: 0px auto;
         padding-left: 10px;
       }
