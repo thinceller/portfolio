@@ -1,10 +1,11 @@
 import dayjs from 'dayjs'
 
-import { Layout, BlogLink } from '../../components'
+import { Layout, BlogLink, Ogp } from '../../components'
 
 const BlogIndex = props => {
   return (
     <Layout title="Blog - thinceller">
+      <Ogp isArticle={false} />
       <h1>Blog</h1>
       {props.blogdata.map(data => (
         <BlogLink {...data} key={data.slug} />
