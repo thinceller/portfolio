@@ -9,16 +9,17 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang="ja">
-        <Head />
+        <Head>
+          <style>{`
+            body {
+              margin: 0;
+            }
+          `}</style>
+        </Head>
         <body>
           <Main />
           <NextScript />
         </body>
-        <style jsx>{`
-          body {
-            margin: 0px;
-          }
-        `}</style>
       </Html>
     )
   }
