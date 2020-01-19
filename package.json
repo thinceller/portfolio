@@ -15,5 +15,6 @@
     "dev": "next",
     "export": "next build && next export",
     "start": "next start"
-  }
+  },
+  "devDependencies": {}
 }

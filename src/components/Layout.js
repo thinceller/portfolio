@@ -8,7 +8,15 @@ const Layout = props => (
       <title>{props.title}</title>
     </Head>
     <Header />
-    {props.children}
+    <div className="main">
+      {props.children}
+    </div>
+    <style jsx>{`
+      .main {
+        max-width: 1200px;
+        margin: 10px auto;
+      }
+    `}</style>
   </>
 )
 

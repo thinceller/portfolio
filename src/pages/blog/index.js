@@ -18,6 +18,12 @@ const BlogIndex = props => {
           </li>
         ))}
       </ul>
+      <style jsx>{`
+        ul {
+          padding: 0px;
+          list-style: none;
+        }
+      `}</style>
     </Layout>
   )
 }
