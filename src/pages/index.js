@@ -1,13 +1,11 @@
-import { Header } from '../components'
-import Head from "next/head"
+import { Layout } from '../components'
 
 const Home = () => (
-    <>
-      <Header />
-      <article>
+    <Layout title="thinceller">
+      <div>
         <h1>thinceller</h1>
-      </article>
-    </>
+      </div>
+    </Layout>
 )
 
 export default Home

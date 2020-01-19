@@ -1,11 +1,10 @@
 import Link from 'next/link'
 
-import { Header } from '../../components'
+import { Layout } from '../../components'
 
-const Blog = props => {
+const BlogIndex = props => {
   return (
-    <>
-      <Header />
+    <Layout title="Blog - thinceller">
       <h1>Blog</h1>
       <ul>
         {props.blogdata.map(data => (
@@ -19,11 +18,11 @@ const Blog = props => {
           </li>
         ))}
       </ul>
-    </>
+    </Layout>
   )
 }
 
-Blog.getInitialProps = async () => {
+BlogIndex.getInitialProps = async () => {
   const context = require.context('../../../content/blog', true, /\.md$/)
   const blogFiles = context
     .keys()
@@ -43,4 +42,4 @@ Blog.getInitialProps = async () => {
   }
 }
 
-export default Blog
+export default BlogIndex

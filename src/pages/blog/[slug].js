@@ -1,12 +1,11 @@
-import { Header } from '../../components'
+import { Layout } from '../../components'
 
 const Blog = props => (
-  <>
-    <Header />
+  <Layout title={`${props.title} - thinceller`}>
     <h1>{props.title}</h1>
     <p>{props.date}</p>
     <div dangerouslySetInnerHTML={{ __html: props.html }} />
-  </>
+  </Layout>
 )
 
 Blog.getInitialProps = async ctx => {
