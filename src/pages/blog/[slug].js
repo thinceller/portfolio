@@ -1,28 +1,16 @@
-import dayjs from 'dayjs'
-
 import { Layout, Ogp } from '../../components'
 
-const Blog = props => (
-  <Layout title={`${props.title} - thinceller`}>
+const Blog = () => (
+  <Layout title="title - thinceller">
     <Ogp
       isArticle={true}
-      title={props.title}
-      description={props.description}
-      url={`/blog/${props.slug}`}
+      title="title"
+      description="description"
+      url="/blog"
     />
-    <h1>{props.title}</h1>
-    <p>{dayjs(props.date).format('YYYY/MM/DD')}</p>
-    <div dangerouslySetInnerHTML={{ __html: props.html }} />
+    <h1>blog title</h1>
+    <p>date</p>
   </Layout>
 )
-
-Blog.getInitialProps = async ctx => {
-  const { slug } = ctx.query
-  const fm = await import(`../../../content/blog/${slug}.md`)
-  return {
-    html: fm.html,
-    ...fm.attributes
-  }
-}
 
 export default Blog
