@@ -2,4 +2,4 @@
 
 https://thinceller.net
 
-My portfolio and blog site.
+My portfolio site.
